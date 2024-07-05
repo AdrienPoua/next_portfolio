@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 
 export default function About() {
   return (
-    <Layout title="À propos">
+    <Layout title="Présentation">
       <Typography variant="body1" paragraph className="hover:border-blue-500 hover:border transition-colors p-4 duration-300 leading-8 ">
         Développeur web frontend passionné basé en Île-de-France, je suis titulaire d'une certification RNCP obtenue avec OpenClassrooms. Mon enthousiasme pour le codage ne cesse de croître chaque jour.
         Je suis actuellement à la recherche d'une opportunité au sein d'une équipe dynamique et innovante. Mon objectif est de contribuer avec mes compétences techniques tout en continuant à apprendre et à évoluer professionnellement.

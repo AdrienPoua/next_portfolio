@@ -1,15 +1,23 @@
-import { Box, Container, Link } from '@mui/material'
-import React from 'react'
+import { Box, Container, Link } from '@mui/material';
+import React from 'react';
+
+const CustomLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
+  return (
+    <Link href={href} className="mr-4 text-black no-underline text-xl hover:underline underline-offset-4 ">
+      {children}
+    </Link>
+  );
+};
 
 export default function DesktopNav() {
   return (
-    <Container component="nav" className="py-5">
+    <Box component="nav" className="py-5 px-10 bg-white">
       <Box className="flex items-center justify-end">
-        <Link href="#about" className="mr-4">About</Link>
-        <Link href="#competences" className="mr-4">Compétences</Link>
-        <Link href="#projets" className="mr-4">Projets</Link>
-        <Link href="#contact">Contact</Link>
+        <CustomLink href="#Présentation">Présentation</CustomLink>
+        <CustomLink href="#compétences">Compétences</CustomLink>
+        <CustomLink href="#projets">Projets</CustomLink>
+        <CustomLink href="#contact">Contact</CustomLink>
       </Box>
-    </Container>
-  )
+    </Box>
+  );
 }

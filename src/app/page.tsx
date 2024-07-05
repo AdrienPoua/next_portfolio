@@ -11,9 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Container component="main">
-        <HeroSection />
-      </Container>
+      <HeroSection />
       <About />
       <Skills />
       <Projets />
