@@ -11,15 +11,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Container>
-        <Container component="main">
-          <HeroSection />
-        </Container>
-        <About />
-        <Skills />
-        <Projets />
-        <Contact />
+      <Container component="main">
+        <HeroSection />
       </Container>
+      <About />
+      <Skills />
+      <Projets />
+      <Contact />
       <Footer />
     </>
   );

@@ -1,7 +1,10 @@
 import React from 'react'
+import Layout from "@layouts/Section"
 
 export default function Contact() {
   return (
-    <div>Contact</div>
+    <Layout title="Contact">
+      
+    </Layout>
   )
 }
