@@ -23,6 +23,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@public/*": ["./public/*"],
       "@actions": ["./src/app/actions.ts"],
+      "@animations": ["./src/animations/index.js"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

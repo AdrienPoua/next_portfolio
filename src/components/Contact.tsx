@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from "@layouts/Section";
 import { Box, TextField, Button, Alert } from '@mui/material';
 import { sendEmail } from "@actions";
+import ContactLinks from "@components/ContactLinks";
 
 export default function Contact() {
   const [content, setContent] = useState("");
@@ -60,34 +61,37 @@ export default function Contact() {
 
   return (
     <Layout title="Contact">
-      <Box component="form" onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-5 grow">
-        <TextField
-          label="Votre email"
-          variant="outlined"
-          value={from}
-          onChange={handleFromChange}
-          className="max-w-[800px] w-full bg-white"
-        />
-        <TextField
-          label="Entrez votre message ici"
-          multiline
-          rows={10}
-          variant="outlined"
-          value={content}
-          onChange={handleContentChange}
-          className="max-w-[800px] w-full bg-white"
-        />
-        <Button type="submit" variant="contained" color="primary" disabled={disabled}>
-          Soumettre
-        </Button>
-      </Box>
-      {result && (
-        <Box mt={4} className="max-w-[800px] mx-auto">
-          <Alert severity={result.success ? "success" : "error"}>
-            {result.message}
-          </Alert>
+      <Box className="flex justify-center gap-5">
+        <ContactLinks />
+        <Box component="form" onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-5">
+          <TextField
+            label="Votre email"
+            variant="outlined"
+            value={from}
+            onChange={handleFromChange}
+            className="min-w-[800px] w-full bg-white"
+          />
+          <TextField
+            label="Entrez votre message ici"
+            multiline
+            rows={10}
+            variant="outlined"
+            value={content}
+            onChange={handleContentChange}
+            className="max-w-[800px] w-full bg-white"
+          />
+          <Button type="submit" variant="contained" color="primary" disabled={disabled}>
+            Soumettre
+          </Button>
         </Box>
-      )}
+      </Box>
+        {result && (
+          <Box mt={4} className="max-w-[800px] mx-auto">
+            <Alert severity={result.success ? "success" : "error"}>
+              {result.message}
+            </Alert>
+          </Box>
+        )}
     </Layout>
   );
 }

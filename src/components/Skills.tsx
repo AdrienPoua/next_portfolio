@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import Layout from "@layouts/Section"
 import { Box } from '@mui/material'
@@ -13,6 +14,10 @@ import NodeJSIMG from '@public/nodejs.png'
 import MongoDBIMG from '@public/mongodb.png'
 import Tooltip from '@mui/material/Tooltip'
 import Fade from '@mui/material/Fade'
+import BoostrapIMG from '@public/bootstrap.jpeg'
+import { motion } from 'framer-motion'
+import { blurInAnimation } from '@/animations'
+import useVisibility from '@/hooks/useVisiblity'
 
 
 const Img: { [key: string]: StaticImageData } = {
@@ -25,6 +30,7 @@ const Img: { [key: string]: StaticImageData } = {
   "MUI": MUIIMG,
   "nodeJS": NodeJSIMG,
   "mongoDB": MongoDBIMG,
+  "bootstrap": BoostrapIMG,
 }
 
 const Circle = () => {
@@ -51,14 +57,24 @@ const Item = ({ bottom, skill }: { bottom?: boolean, skill: string }) => {
 }
 
 const Skill = ({ skills }: { skills: string[] }) => {
+  const skillRef = React.useRef(null);
+  const isVisible = useVisibility(skillRef);
   return (
-    <Box className={`flex relative shrink-0 aspect-square justify-between m-8 ${skills.length < 2 ? "size-44" : "size-56"}`}>
-      <Circle />
-      <Box className="p-3 bg-black aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
-      {skills.map((skill, index) => (
-        <Item key={skill} skill={skill} bottom={index === 2} />
-      ))}
-    </Box>
+    <motion.div
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      whileHover="hover"
+      variants={blurInAnimation}
+      ref={skillRef}
+    >
+      <Box className={`flex relative shrink-0 aspect-square justify-between m-8 ${skills.length < 2 ? "size-44" : "size-56"}`} ref={skillRef}>
+        <Circle />
+        <Box className="p-3 bg-black aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
+        {skills.map((skill, index) => (
+          <Item key={skill} skill={skill} bottom={index === 2} />
+        ))}
+      </Box>
+    </motion.div>
   )
 }
 
@@ -68,7 +84,7 @@ export default function Skills() {
       <Box className="flex flex-wrap justify-center">
         <Skill skills={['react', 'nextJS', 'typescript']} />
         <Skill skills={['git', 'github']} />
-        <Skill skills={['tailwind', 'MUI']} />
+        <Skill skills={['tailwind', 'MUI', 'bootstrap']} />
         <Skill skills={['nodeJS', 'mongoDB']} />
       </Box>
     </Layout>

@@ -1,19 +1,11 @@
 "use client";
-import React, { useState } from "react";
 import { Box, Link, Typography } from "@mui/material";
 
 export default function Footer() {
-  const [isHover, setIsHover] = useState(false);
-
-  const handleMouseEnter = () => setIsHover(true);
-  const handleMouseLeave = () => setIsHover(false);
-
   return (
     <Box
-      className="bg-black py-8  flex justify-center flex-col relative"
-      component="footer"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      className="bg-black py-8  flex justify-center flex-col relative -z-10"
+      component="footer">
       <Box className="w-full min-h-[2px] border-t-2 border-dashed border-white absolute top-0" />
       <Box className="flex justify-center ">
         <Link
@@ -32,7 +24,7 @@ export default function Footer() {
             by
             <Box
               component="span"
-              className={isHover ? "ml-1 text-primary" : "ml-1"}>
+              className="ml-1">
               Adrien POUA
             </Box>
           </Typography>
