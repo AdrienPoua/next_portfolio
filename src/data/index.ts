@@ -1,14 +1,17 @@
-import ReactImg from "@public/react.png";
+import React from "@public/react.png";
 import github from "@public/github.png";
 import linkedin from "@public/linkedin.png";
 import email from "@public/mail.png";
+import nextJS from "@public/nextjs.png";
+import Typescript from "@public/typescript.png";
+import Framer from "@public/framer.png";
 
 export const projectsData = [
   {
     title: "Argenteuil Basketball",
     description: "Site officiel du club de basket d'Argenteuil. Fait de A à Z from scratch.",
     tags: ["Next.js", "Tailwind", "Sanity", "MUI", "Next-auth", "Nodemailer", "API", "POO", "Design patterns"],
-    imageUrl: ReactImg,
+    imageUrl: React,
     site: "https://argenteuilbasketball.com",
     github: "https://github.com/AdrienPoua/argenteuil_basketball",
   },
@@ -16,7 +19,7 @@ export const projectsData = [
     title: "Portfolio",
     description: "Mon ancien portfolio avec three.js et framer-motion",
     tags: ["React", "Framer-motion", "Three.JS"],
-    imageUrl: ReactImg,
+    imageUrl: React,
     site: "https://adrienpoua.fr",
     github: "https://github.com/AdrienPoua/Portfolio_space",
   },
@@ -24,7 +27,7 @@ export const projectsData = [
     title: "Kasa",
     description: "Site fait en React et Sass pour une agence de location de logements lors de ma formation",
     tags: ["React", "Sass"],
-    imageUrl: ReactImg,
+    imageUrl: React,
     site: "https://adrienpoua.github.io/Poua_Adrien_6_Kasa_072023/",
     github: "https://github.com/AdrienPoua/Poua_Adrien_6_Kasa_072023.git",
   },
@@ -44,3 +47,10 @@ export const contact = [
     img: email,
   },
 ];
+
+export const footer = [
+  nextJS,
+  React,
+  Typescript,
+  Framer
+]

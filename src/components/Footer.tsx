@@ -1,35 +1,38 @@
 "use client";
-import { Box, Link, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import Image, { StaticImageData } from "next/image";
+import { v4 as uuidv4 } from "uuid";
+import { footer } from "@/data";
+import { motion } from "framer-motion";
+import { wavyAnimation } from "@/animations";
+
+
+
+const Item = ({ content, delay }: { content: StaticImageData, delay: number }) => {
+  return (
+    <motion.div
+      variants={wavyAnimation}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className=" size-fit aspect-square overflow-hidden rounded-full"
+      transition={{ yoyo: Infinity, duration: 1.5, repeat: Infinity, repeatType: "mirror", delay: delay * 0.25 }}
+    >
+      <Image src={content} width={80} height={80} alt="stack" className="min-w-20 min-h-20" objectFit="cover" />
+    </motion.div>
+  )
+}
 
 export default function Footer() {
   return (
     <Box
-      className="bg-black py-8  flex justify-center flex-col relative -z-10"
-      component="footer">
-      <Box className="w-full min-h-[2px] border-t-2 border-dashed border-white absolute top-0" />
-      <Box className="flex justify-center ">
-        <Link
-          href="https://www.linkedin.com/in/adrien-poua"
-          target="_blank"
-          className="text-gray-500 flex justify-center items-center no-underline">
-          <Typography
-            variant="body1"
-            sx={{ display: "flex", alignItems: "center" }}>
-            Made with
-            <Box
-              component="span"
-              className="text-primary mx-1">
-              ❤
-            </Box>
-            by
-            <Box
-              component="span"
-              className="ml-1">
-              Adrien POUA
-            </Box>
-          </Typography>
-        </Link>
-      </Box>
+      component="footer"
+      className="bg-black py-8 flex justify-center border-t border-primary gap-8"
+    >
+      {footer.map((content, index) => (
+        <Item content={content} key={uuidv4()} delay={index} />
+      ))}
     </Box>
   );
 }
+

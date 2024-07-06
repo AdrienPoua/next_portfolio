@@ -6,7 +6,7 @@ import { Box } from '@mui/material'
 
 export default function Projets() {
   return (
-    <Layout title="Projets">
+    <Layout title="Projets" black>
       <Box className="flex flex-col justify-center m-auto">
       {
         projectsData.map((project, index) => (

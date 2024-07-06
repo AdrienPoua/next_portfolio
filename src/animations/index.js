@@ -7,4 +7,8 @@ export const blurInAnimation = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { type: "spring" } },
   };
-  
+
+  export const wavyAnimation = {
+    hidden: { x: 2, y: 2},
+    visible: { x: -2, y: -2},
+  };

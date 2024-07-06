@@ -4,15 +4,27 @@ import { contact } from '@/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import { v4 as uuidv4 } from 'uuid'
+import { motion } from 'framer-motion'
+import { wavyAnimation } from '@/animations'
 
 export default function ContactLinks() {
     return (
-        <Box className="flex flex-col gap-5 shrink-1 w-fit">
+        <Box className="flex md:flex-col justify-center md:justify-start w-full gap-5 shrink-0 md:w-fit">
             {
                 contact.map((item, index) => (
-                    <Link href={Object.values(item)[0]} key={uuidv4()} target="_blank" rel="noreferrer" className="overflow-hidden rounded-full aspect-square">
-                        <Image src={Object.values(item)[1]} alt={Object.keys(item)[0]} className="w-10 h-10 mb-4" />
-                    </Link>
+                    <motion.div
+                        variants={wavyAnimation}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        key={uuidv4()}
+                        className="overflow-hidden rounded-full aspect-square"
+                        transition={{ yoyo: Infinity, duration: 1, repeat: Infinity, repeatType: "mirror", delay: index * 0.25, ease: "easeInOut" }}
+                    >
+                        <Link href={Object.values(item)[0]} target="_blank" rel="noreferrer">
+                            <Image src={Object.values(item)[1]} alt={Object.keys(item)[0]} className="w-10 h-10 mb-4" />
+                        </Link>
+                    </motion.div>
                 ))
             }
         </Box>
