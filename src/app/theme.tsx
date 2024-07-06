@@ -8,15 +8,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&.MuiButton-contained": {
-            backgroundColor: "#424242", // Utilisation d'une couleur hexadécimale valide
+            backgroundColor: "#6b7280", // Utilisation d'une couleur hexadécimale valide
             color: "white",
             borderColor: "gray",
-          },
-          "&.Mui-disabled": {
-            backgroundColor: "#424242", // Utilisation d'une couleur hexadécimale valide
-            color: "white",
-            borderColor: "gray",
-          },
+            "&:hover": {
+              backgroundColor: "#4b5563",
+            },
+          }
         },
       },
     },

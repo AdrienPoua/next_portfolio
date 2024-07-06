@@ -10,8 +10,8 @@ type CustomLinkProps = {
 
 const CustomLink = ({ href, title, setIsOpen }: CustomLinkProps) => {
   return (
-    <ListItem>
-      <Link href={'#' + href} onClick={() => setIsOpen(false)}>
+    <ListItem className="bg-gray-500 px-10 py-5 hover:bg-gray-300 transition-colors duration-150 shadow-2xl">
+      <Link href={'#' + href} onClick={() => setIsOpen(false)} className="text-black no-underline">
         {title}
       </Link>
     </ListItem>
@@ -21,7 +21,7 @@ const CustomLink = ({ href, title, setIsOpen }: CustomLinkProps) => {
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Container component="nav" className="flex items-center justify-end">
+    <Container component="nav" className="flex items-center justify-end bg-white">
       <Button onClick={() => setIsOpen(true)}>
         <MenuIcon className="text-6xl" />
       </Button>
@@ -30,9 +30,10 @@ export default function MobileNav() {
         open={isOpen}
         onClose={() => setIsOpen(false)}>
         <Box>
-          <List className="flex flex-col">
+          <List className="flex flex-col p-0">
             <CustomLink href="about" title="About" setIsOpen={setIsOpen} />
-            <CustomLink href="projects" title="Projects" setIsOpen={setIsOpen} />
+            <CustomLink href="compétences" title="Projects" setIsOpen={setIsOpen} />
+            <CustomLink href="projets" title="Contact" setIsOpen={setIsOpen} />
             <CustomLink href="contact" title="Contact" setIsOpen={setIsOpen} />
           </List>
         </Box>
