@@ -35,7 +35,7 @@ const Img: { [key: string]: StaticImageData } = {
 
 const Circle = () => {
   return (
-    <Box className="border-dashed border-2 border-black rounded-full absolute inset-0 animate-spin">
+    <Box className="border-dashed border-2 border-black rounded-full absolute inset-0 animate-spin hover:animate-pulse cursor-pointer">
     </Box>
   )
 }
@@ -49,7 +49,7 @@ const Item = ({ bottom, skill }: { bottom?: boolean, skill: string }) => {
       placement="top"
       arrow
     >
-      <Box className={`rounded-full overflow-hidden h-fit w-1/3 z-10 border border-black ${bottom ? "absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" : ""}`}>
+      <Box className={`rounded-full overflow-hidden h-fit  w-1/3 z-10 border hover:scale-125 cursor-pointer  transition-transform duration-125 ease-in-out border-black ${bottom ? "absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" : ""}`}>
         <Image src={Img[skill]} alt={`${skill} logo`} objectFit='cover' className="aspect-square" />
       </Box>
     </Tooltip>
@@ -69,7 +69,7 @@ const Skill = ({ skills }: { skills: string[] }) => {
     >
       <Box className={`flex relative shrink-0 aspect-square justify-between m-8 ${skills.length < 2 ? "size-44" : "size-56"}`} ref={skillRef}>
         <Circle />
-        <Box className="p-3 bg-black aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
+        <Box className="p-3  bg-black aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
         {skills.map((skill, index) => (
           <Item key={skill} skill={skill} bottom={index === 2} />
         ))}
@@ -80,7 +80,7 @@ const Skill = ({ skills }: { skills: string[] }) => {
 
 export default function Skills() {
   return (
-    <Layout title="Compétences" white >
+    <Layout title="Compétences" >
       <Box className="flex flex-wrap justify-center">
         <Skill skills={['react', 'nextJS', 'typescript']} />
         <Skill skills={['git', 'github']} />

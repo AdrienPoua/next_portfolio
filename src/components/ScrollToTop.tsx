@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fab, Zoom, useScrollTrigger } from '@mui/material';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from '@mui/material/Box';
@@ -12,6 +12,28 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
     threshold: 100,
   });
 
+  const [atBottom, setAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hasWindow) {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        const totalHeight = document.documentElement.scrollHeight;
+        const isMobile = window.innerWidth < 900;
+        if (scrollPosition+25 >= totalHeight && isMobile) {
+          setAtBottom(true);
+        } else {
+          setAtBottom(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleClick = (event : React.MouseEvent<HTMLElement> ) => {
     const anchor = document.querySelector('#back-to-top-anchor');
     if (anchor) {
@@ -23,7 +45,7 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
   };
 
   return (
-    <Zoom in={trigger}>
+    <Zoom in={trigger && !atBottom}>
       <Box
         onClick={handleClick}
         className="fixed bottom-4 right-4"
@@ -36,12 +58,11 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
 }
 
 export default function BackToTop() {
-
   return (
-      <ScrollTop >
-        <Fab  size="large" aria-label="scroll back to top" className="z-40">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
+    <ScrollTop>
+      <Fab size="large" aria-label="scroll back to top" className="z-40">
+        <KeyboardArrowUpIcon />
+      </Fab>
+    </ScrollTop>
   );
 }

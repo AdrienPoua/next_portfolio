@@ -5,13 +5,16 @@ import email from "@public/mail.png";
 import nextJS from "@public/nextjs.png";
 import Typescript from "@public/typescript.png";
 import Framer from "@public/framer.png";
+import ABB from "@public/ABB.png";
+import portfolio from "@public/portfolio.png";
+import kasa from "@public/kasa.png";
 
 export const projectsData = [
   {
     title: "Argenteuil Basketball",
     description: "Site officiel du club de basket d'Argenteuil. Fait de A à Z from scratch.",
     tags: ["Next.js", "Tailwind", "Sanity", "MUI", "Next-auth", "Nodemailer", "API", "POO", "Design patterns"],
-    imageUrl: React,
+    imageUrl: ABB,
     site: "https://argenteuilbasketball.com",
     github: "https://github.com/AdrienPoua/argenteuil_basketball",
   },
@@ -19,7 +22,7 @@ export const projectsData = [
     title: "Portfolio",
     description: "Mon ancien portfolio avec three.js et framer-motion",
     tags: ["React", "Framer-motion", "Three.JS"],
-    imageUrl: React,
+    imageUrl: portfolio,
     site: "https://adrienpoua.fr",
     github: "https://github.com/AdrienPoua/Portfolio_space",
   },
@@ -27,7 +30,7 @@ export const projectsData = [
     title: "Kasa",
     description: "Site fait en React et Sass pour une agence de location de logements lors de ma formation",
     tags: ["React", "Sass"],
-    imageUrl: React,
+    imageUrl: kasa,
     site: "https://adrienpoua.github.io/Poua_Adrien_6_Kasa_072023/",
     github: "https://github.com/AdrienPoua/Poua_Adrien_6_Kasa_072023.git",
   },

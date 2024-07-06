@@ -17,8 +17,8 @@ export default function Section({ title, children, black, href }: Readonly<{ tit
             ref={sectionRef}
         >        <Box component="section" className={`flex flex-col py-24 px-[10%] ${black ? "bg-black" : ""}`} id={href ? href : title.toLowerCase().replace(/\s+/g, '-')}>
                 <Box className="flex items-center mb-10">
-                    <Box className={`w-8 h-6 inline-block ${black ? "bg-white" : "bg-black"}`} />
-                    <Typography component="h3" variant={black ? "body2" : "body1"} className="ms-4 text-5xl">{title}</Typography>
+                    <Box className={`w-8 h-6 inline-block shrink-0 ${black ? "bg-white" : "bg-black"}`} />
+                    <Typography component="h3" variant={black ? "body2" : "body1"} className="ms-4 text-4xl md:text-5xl">{title}</Typography>
                 </Box>
                 {children}
             </Box>
