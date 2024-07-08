@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      className="bg-black py-8 flex justify-center border-t border-primary gap-4 px-10"
+      className="bg-black py-8 flex justify-center gap-4 px-10"
     >
       {footer.map((content, index) => (
         <Item content={content} key={uuidv4()} delay={index} />

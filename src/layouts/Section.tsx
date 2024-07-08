@@ -15,10 +15,10 @@ export default function Section({ title, children, black, href }: Readonly<{ tit
             whileHover="hover"
             variants={sectionAnimation}
             ref={sectionRef}
-        >        <Box component="section" className={`flex flex-col py-24 px-[10%] ${black ? "bg-black" : ""}`} id={href ? href : title.toLowerCase().replace(/\s+/g, '-')}>
-                <Box className="flex items-center mb-10">
+        >        <Box component="section" className={`flex flex-col py-16 px-[10%] ${black ? "bg-black" : ""}`} id={href ? href : title.toLowerCase().replace(/\s+/g, '-')}>
+                <Box className="flex items-center mb-16">
                     <Box className={`w-8 h-6 inline-block shrink-0 ${black ? "bg-white" : "bg-black"}`} />
-                    <Typography component="h3" variant={black ? "body2" : "body1"} className="ms-4 text-4xl md:text-5xl">{title}</Typography>
+                    <Typography variant="h2" className={`ms-4 text-4xl md:text-5xl break-all  ${black ? "text-white" : "text-black"} `}>{title}</Typography>
                 </Box>
                 {children}
             </Box>

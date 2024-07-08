@@ -8,6 +8,8 @@ import Framer from "@public/framer.png";
 import ABB from "@public/ABB.png";
 import portfolio from "@public/portfolio.png";
 import kasa from "@public/kasa.png";
+import Image from "next/image";
+import { link } from "fs";
 
 export const projectsData = [
   {
@@ -38,16 +40,19 @@ export const projectsData = [
 
 export const contact = [
   {
-    Github: "https://github.com/AdrienPoua",
+    link: "https://github.com/AdrienPoua",
     img: github,
+    name: "Github",
   },
   {
-    Linkedin: "https://www.linkedin.com/in/adrien-poua/",
+    link: "https://www.linkedin.com/in/adrien-poua/",
     img: linkedin,
+    name: "Linkedin",
   },
   {
-    Email: "mailto:adrien.poua@gmail.com",
+    link: "mailto:adrien.poua@gmail.com",
     img: email,
+    name: "Email",
   },
 ];
 

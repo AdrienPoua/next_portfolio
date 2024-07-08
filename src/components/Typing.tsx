@@ -14,7 +14,7 @@ export default function TypingEffect({ text, classNames }: Readonly<{ text: stri
             } else {
                 clearInterval(typingEffect);
             }
-        }, 100);
+        }, 30);
 
         return () => {
             clearInterval(typingEffect);

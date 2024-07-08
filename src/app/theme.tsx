@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 
 // Créez un thème personnalisé
@@ -21,7 +21,16 @@ const theme = createTheme({
     },
     h1: {
       color: '#000000', // Couleur de texte pour h1
-    }
+      fontFamily: 'Playfair Display',
+      
+    },
+    h2: {
+      fontFamily: 'Playfair Display',
+    },
+    h3: {
+      fontFamily: 'Playfair Display',
+      color: '#6b7280', // Couleur de texte pour h3
+    },
   },
   components: {
     MuiButton: {
@@ -66,4 +75,6 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+const responsiveTheme = responsiveFontSizes(theme);
+
+export default responsiveTheme;

@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 
 const hasWindow = typeof window !== 'undefined';
 
-function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
+function ScrollTop({ children }: Readonly<{ children: React.ReactNode }>) {
   const trigger = useScrollTrigger({
     target: hasWindow ? window : undefined,
     disableHysteresis: true,
@@ -20,7 +20,7 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
         const scrollPosition = window.scrollY + window.innerHeight;
         const totalHeight = document.documentElement.scrollHeight;
         const isMobile = window.innerWidth < 900;
-        if (scrollPosition+25 >= totalHeight && isMobile) {
+        if (scrollPosition + 25 >= totalHeight && isMobile) {
           setAtBottom(true);
         } else {
           setAtBottom(false);
@@ -34,7 +34,7 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
     };
   }, []);
 
-  const handleClick = (event : React.MouseEvent<HTMLElement> ) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     const anchor = document.querySelector('#back-to-top-anchor');
     if (anchor) {
       anchor.scrollIntoView({
@@ -60,7 +60,8 @@ function ScrollTop({children} : Readonly<{ children: React.ReactNode }>) {
 export default function BackToTop() {
   return (
     <ScrollTop>
-      <Fab size="large" aria-label="scroll back to top" className="z-40">
+      <Fab size="large" aria-label="scroll back to top" color="primary"
+        className="z-40">
         <KeyboardArrowUpIcon />
       </Fab>
     </ScrollTop>
