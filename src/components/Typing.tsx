@@ -24,7 +24,7 @@ export default function TypingEffect({ text, classNames }: Readonly<{ text: stri
 
     return (
         <Typography className={classNames} >
-            {displayedText || text}
+            {displayedText && displayedText }
         </Typography>
     );
 }
