@@ -21,7 +21,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
-      "@public/*": ["./public/*"],
+      "@/public/*": ["./public/*"],
       "@actions": ["./src/app/actions.ts"],
       "@animations": ["./src/animations/index.js"],
     }

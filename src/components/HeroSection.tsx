@@ -2,7 +2,7 @@
 
 import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
-import Adrien from '@public/poua_adrien.jpg';
+import Adrien from '@/public/poua_adrien.jpg';
 import TypingEffect from "@/components/Typing";
 import { contact } from "@/data/index";
 

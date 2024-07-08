@@ -1,15 +1,13 @@
-import React from "@public/react.png";
-import github from "@public/github.png";
-import linkedin from "@public/linkedin.png";
-import email from "@public/mail.png";
-import nextJS from "@public/nextjs.png";
-import Typescript from "@public/typescript.png";
-import Framer from "@public/framer.png";
-import ABB from "@public/ABB.png";
-import portfolio from "@public/portfolio.png";
-import kasa from "@public/kasa.png";
-import Image from "next/image";
-import { link } from "fs";
+import React from "@/public/react.png";
+import github from "@/public/github.png";
+import linkedin from "@/public/linkedin.png";
+import email from "@/public/mail.png";
+import nextJS from "@/public/nextjs.png";
+import Typescript from "@/public/typescript.png";
+import Framer from "@/public/framer.png";
+import ABB from "@/public/ABB.png";
+import portfolio from "@/public/portfolio.png";
+import kasa from "@/public/kasa.png";
 
 export const projectsData = [
   {
@@ -25,7 +23,7 @@ export const projectsData = [
     description: "Mon ancien portfolio avec three.js et framer-motion",
     tags: ["React", "Framer-motion", "Three.JS"],
     imageUrl: portfolio,
-    site: "https://adrienpoua.fr",
+    site: "https://portfolio-space-puce.vercel.app",
     github: "https://github.com/AdrienPoua/Portfolio_space",
   },
   {

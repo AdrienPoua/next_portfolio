@@ -21,8 +21,8 @@ export default function ContactLinks() {
                         className="overflow-hidden rounded-full aspect-square"
                         transition={{ yoyo: Infinity, duration: 1, repeat: Infinity, repeatType: "mirror", delay: index * 0.25, ease: "easeInOut" }}
                     >
-                        <Link href={Object.values(item)[0]} target="_blank" rel="noreferrer">
-                            <Image src={Object.values(item)[1]} alt={Object.keys(item)[0]} className="w-10 h-10 mb-4" />
+                        <Link href={item.link} target="_blank" rel="noreferrer">
+                            <Image src={item.img} alt={"Way to contact me"} className="w-10 h-10 mb-4" />
                         </Link>
                     </motion.div>
                 ))
