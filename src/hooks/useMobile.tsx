@@ -4,7 +4,7 @@ import { useMediaQuery, Theme } from "@mui/material";
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(false);
 
-    const isMobileQuery = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+    const isMobileQuery = useMediaQuery((theme: Theme) => theme.breakpoints.down(1024));
 
     useEffect(() => {
         setIsMobile(isMobileQuery);

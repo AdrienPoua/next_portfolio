@@ -9,7 +9,7 @@ import { wavyAnimation } from '@/animations'
 
 export default function ContactLinks() {
     return (
-        <Box className="flex md:flex-col justify-center md:justify-start w-full gap-5 shrink-0 md:w-fit">
+        <Box className="flex lg:flex-col justify-center lg:justify-start w-full gap-5 shrink-0 lg:w-fit">
             {
                 contact.map((item, index) => (
                     <motion.div

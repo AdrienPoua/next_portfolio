@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
 import DesktopNav from "@/components/DesktopNav";
 import MobileNav from "@/components/MobileNav";
-import { useMediaQuery, Theme, Box } from "@mui/material";
-import useIsMobile  from "@/hooks/useMobile";
+import { Box } from "@mui/material";
+import useIsMobile from "@/hooks/useMobile";
 import Logo from "@/components/Logo";
 
 

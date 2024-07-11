@@ -12,6 +12,15 @@ const theme = createTheme({
       secondary: '#FFFF', // Couleur de texte secondaire
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      lg: 1024,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   typography: {
     body1: {
       color: '#000000',
