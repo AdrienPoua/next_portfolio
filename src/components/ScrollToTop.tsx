@@ -59,7 +59,7 @@ function ScrollTop({ children }: Readonly<{ children: React.ReactNode }>) {
 
 export default function BackToTop() {
   return (
-    <ScrollTop>
+    <ScrollTop >
       <Fab size="large" aria-label="scroll back to top" color="primary"
         className="z-40">
         <KeyboardArrowUpIcon />

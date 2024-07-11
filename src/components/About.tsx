@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 export default function About() {
   return (
     <Layout title="À propos" black href="about">
-      <Typography variant="body2" paragraph className="leading-8 md:text-xl">
+      <Typography variant="body2" className="leading-loose text-lg">
         Développeur web frontend passionné basé en Île-de-France, je suis à la recherche d'une opportunité au sein d'une équipe dynamique. <br />
         Je prends plaisir à améliorer mes compétences et je suis prêt à apporter une valeur ajoutée à nos futures collaborations. <br />
         En dehors du développement web, je suis un passionné de basketball, où je suis impliqué en tant que joueur, arbitre et dirigeant. <br />
