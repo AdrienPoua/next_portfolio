@@ -9,7 +9,7 @@ import Logo from "@/components/Logo";
 export default function Header() {
   const isMobile = useIsMobile();
   return (
-    <Box component="header" id="back-to-top-anchor" className="flex justify-between mx-10 my-5">
+    <Box component="header" id="back-to-top-anchor" className="flex justify-between items-center lg:items-start mx-10 my-5">
       <Logo />
       {isMobile ? <MobileNav /> : <DesktopNav />}
     </Box>

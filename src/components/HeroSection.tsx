@@ -16,7 +16,7 @@ const ContactButton = ({ fullWidth = false }: { fullWidth?: boolean }) => (
     color="primary"
     size="large"
     fullWidth={fullWidth}
-    className="w-fit h-fit shrink-1 m-auto my-0 lg:my-5"
+    className="w-fit h-fit shrink-1 m-auto my-0 md:my-5"
   >
     Contactez-moi
   </Button>
@@ -25,7 +25,7 @@ const ContactButton = ({ fullWidth = false }: { fullWidth?: boolean }) => (
 // Right Section Component
 const RightSection = () => (
   <Box className="flex justify-center items-center">
-    <Box className="overflow-hidden rounded-full shrink-0 aspect-square lg:size-fit size-48 shadow-gray-500 shadow-2xl drop-shadow-2xl">
+    <Box className="overflow-hidden rounded-full shrink-0 aspect-square md:size-fit size-48 shadow-gray-500 shadow-2xl drop-shadow-2xl">
       <Image
         src={Adrien}
         alt="placeholder"
@@ -48,7 +48,7 @@ const Dev = (): JSX.Element => {
 
 // Left Section Component
 const LeftSection = () => (
-  <Box className="flex flex-col justify-center w-full lg:w-fit order:last lg:order-first  items-center">
+  <Box className="flex flex-col justify-center w-full md:w-fit order:last md:order-first  items-center">
     <Box className="flex flex-row mb-5">
       <Typography variant="h1" className="text-primary text-center flex items-center ">
         <Typography component={'span'} className="text-primary text-center relative text-6xl after:bg-gradient-to-r from-black to-slate-500 after:p-1  after:shadow-xl after:w-full after:rounded-lg after:filter after:absolute after:-bottom-1 after:left-0 inline-block">
@@ -60,7 +60,7 @@ const LeftSection = () => (
       </Typography>
     </Box>
     <TypingEffect text="Développeur Front-end" classNames="text-2xl text-center mb-5" />
-    <Box className="flex lg:gap-5 gap-2 flex-wrap justify-center">
+    <Box className="flex md:gap-5 gap-2 flex-wrap justify-center">
       {contact.map((item) => (
         <Button
           key={item.name}
@@ -84,7 +84,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
   return (
     <>
-      <Box className="flex flex-col lg:flex-row justify-center items-center gap-10" component="main">
+      <Box className="flex flex-col md:flex-row justify-center items-center gap-10" component="main">
         <LeftSection />
         <RightSection />
         {!isMobile && <Dev />}

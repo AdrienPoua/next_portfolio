@@ -65,7 +65,7 @@ export default function ContactForm() {
                 error={result?.success === false}
                 value={from}
                 onChange={handleFromChange}
-                className="w-full bg-white"
+                className="w-full bg-white "
             />
             <TextField
                 label="Entrez votre message ici"
@@ -78,8 +78,8 @@ export default function ContactForm() {
                 onChange={handleContentChange}
                 className="w-full bg-white"
             />
-            {!disabled && <Button type="submit" variant="contained" color="primary" disabled={disabled}>
-                Soumettre
+            {!disabled && <Button type="submit" variant="contained" color="primary" disabled={disabled} >
+                Envoyer
             </Button>}
             {
                 disabled && (
