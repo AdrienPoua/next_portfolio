@@ -11,7 +11,7 @@ const CustomLink = ({ href, children }: { href: string, children: React.ReactNod
 
 export default function DesktopNav() {
   return (
-    <Box component="nav" className="py-5 px-10">
+    <Box component="nav" className="py-5 px-10 md:mb-28">
       <Box className="flex items-center justify-end gap-4">
         <CustomLink href="#about">À propos</CustomLink>
         <CustomLink href="#compétences">Compétences</CustomLink>
