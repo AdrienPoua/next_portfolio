@@ -13,7 +13,7 @@ export const projectsData = [
   {
     title: "Argenteuil Basketball",
     description: "Site officiel du club de basket d'Argenteuil. Fait de A à Z from scratch.",
-    tags: ["Next.js", "Tailwind", "Sanity", "MUI", "Next-auth", "Nodemailer", "API", "POO", "Design patterns"],
+    tags: ["Next.js", "MongoDB", "Tailwind", "Sanity", "MUI", "Next-auth", "Nodemailer", "API", "POO", "Design patterns"],
     imageUrl: ABB,
     site: "https://argenteuilbasketball.com",
     github: "https://github.com/AdrienPoua/argenteuil_basketball",
@@ -32,7 +32,7 @@ export const projectsData = [
     tags: ["React", "Sass"],
     imageUrl: kasa,
     site: "https://adrienpoua.github.io/Poua_Adrien_6_Kasa_072023/",
-    github: "https://github.com/AdrienPoua/Poua_Adrien_6_Kasa_072023.git",
+    github: "https://github.com/AdrienPoua/Poua_Adrien_6_Kasa_072023",
   },
 ];
 
@@ -52,7 +52,7 @@ export const contact = [
     img: email,
     name: "Email",
   },
-];
+]
 
 export const footer = [
   nextJS,
@@ -60,3 +60,5 @@ export const footer = [
   Typescript,
   Framer
 ]
+
+export { github, linkedin, email, nextJS, Typescript, Framer, ABB, portfolio, kasa };

@@ -7,6 +7,7 @@ import TypingEffect from "@/components/Typing";
 import { contact } from "@/data/index";
 import Curv from "@/components/Curv";
 import useIsMobile from '@/hooks/useMobile';
+import { ButtonBlackEffect } from './Button';
 
 // Reusable Button Component
 const ContactButton = ({ fullWidth = false }: { fullWidth?: boolean }) => (
@@ -62,18 +63,7 @@ const LeftSection = () => (
     <TypingEffect text="Développeur Front-end" classNames="text-2xl text-center mb-5" />
     <Box className="flex md:gap-5 gap-2 flex-wrap justify-center">
       {contact.map((item) => (
-        <Button
-          key={item.name}
-          href={item.link}
-          size="small"
-          target="_blank"
-          variant="outlined"
-          className="group rounded-2xl relative px-5 py-1 text-black hover:text-white overflow-hidden "
-          endIcon={<Image src={item.img} alt={item.name} width={30} height={30} className="rounded-full " />}
-        >
-          <Box className="bg-black  absolute -left-3  -right-3 top-0 bottom-0 translate-x-full -skew-x-12 transition-transform duration-300 group-hover:translate-x-0 group-hover:ease-in-out -z-10" />
-          <Typography component="span" className="relative  group-hover:text-white duration-300 font-secondary ">{item.name}</Typography>
-        </Button>
+        <ButtonBlackEffect key={item.name} href={item.link} text={item.name} icon={item.img} />
       ))}
     </Box>
   </Box>

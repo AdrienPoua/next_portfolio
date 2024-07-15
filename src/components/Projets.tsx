@@ -17,6 +17,7 @@ export default function Projets() {
             tags={Array.from(project.tags)}
             imageUrl={project.imageUrl}
             site={project.site}
+            github={project.github}
           />
         ))
       }

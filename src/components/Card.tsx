@@ -4,6 +4,10 @@ import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Typography, Box } from '@mui/material';
+import { wavyAnimation } from "@/animations";
+import Link from "next/link";
+import { github as githubImg } from "@/data";
+
 
 type ProjectProps = {
   title: string;
@@ -11,6 +15,7 @@ type ProjectProps = {
   tags: string[];
   imageUrl: StaticImageData;
   site: string;
+  github: string;
 };
 
 export default function Project({
@@ -19,7 +24,9 @@ export default function Project({
   tags,
   imageUrl,
   site,
+  github,
 }: Readonly<ProjectProps>) {
+  console.log("🚀 ~ github:", github)
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -43,9 +50,17 @@ export default function Project({
         className="bg-gray-100 max-w-[42rem] border cursor-pointer border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20"
       >
         <Box className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <Typography variant="h3" component="h3" className="text-2xl font-semibold">
-            {title}
-          </Typography>
+          <Box className="flex items-center z-10">
+            <Typography variant="h3" component="h3" className="text-xl font-semibold mr-2">
+              {title}
+            </Typography>
+            <Link href={github} target="_blank"
+              onClick={() => window.open(github, "_blank")}
+              rel="noreferrer"
+              className="z-30 overflow-hidden rounded-full aspect-square hover:scale-125 duration-150" >
+              <Image src={githubImg} alt={"Way to contact me"} className="w-10 h-10 mb-4" />
+            </Link>
+          </Box>
           <Typography variant="body1" className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
             {description}
           </Typography>
@@ -61,7 +76,6 @@ export default function Project({
             ))}
           </Box>
         </Box>
-
         <Image
           src={imageUrl}
           alt="Project I worked on"

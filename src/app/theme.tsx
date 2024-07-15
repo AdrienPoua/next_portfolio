@@ -45,6 +45,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          textTransform: 'none',
           "&.MuiButton-contained": {
             backgroundColor: "#6b7280", // Utilisation d'une couleur hexadécimale valide
             color: "white",

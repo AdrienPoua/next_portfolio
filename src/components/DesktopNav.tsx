@@ -1,5 +1,6 @@
 import { Box, Link, Typography } from '@mui/material';
 import React from 'react';
+import { ButtonBlackEffect } from './Button';
 
 const CustomLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
   return (
@@ -14,11 +15,11 @@ export default function DesktopNav() {
   return (
     <Box component="nav" className="md:mb-28">
       <Box className="flex items-center justify-end gap-4">
-        <CustomLink href="#about">À propos</CustomLink>
-        <CustomLink href="#compétences">Compétences</CustomLink>
-        <CustomLink href="#projets">Projets</CustomLink>
-        <CustomLink href="#contact">Contact</CustomLink>
+        <ButtonBlackEffect href="#about" text="À propos" navitem />
+        <ButtonBlackEffect href="#compétences" text="Compétences" navitem/>
+        <ButtonBlackEffect href="#projets" text="Projets" navitem/>
+        <ButtonBlackEffect href="#contact" text="Contact" navitem />
       </Box>
-    </Box>
-  );
+      </Box>
+      );
 }
