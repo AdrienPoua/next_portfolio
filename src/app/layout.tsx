@@ -14,6 +14,7 @@ export default function RootLayout({
   return (
     <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
+
           <CssBaseline />
           <App>
             <ScrollToTopButton />

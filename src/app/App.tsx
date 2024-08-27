@@ -1,11 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
+
 export default function App({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="fr">
             <Helmet>
                 <html lang="fr" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Adrien Poua Portfolio</title>

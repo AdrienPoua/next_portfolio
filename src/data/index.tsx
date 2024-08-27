@@ -13,7 +13,7 @@ export const projectsData = [
   {
     title: "Argenteuil Basketball",
     description: "Site officiel du club de basket d'Argenteuil. Fait de A à Z from scratch.",
-    tags: ["Next.js", "MongoDB", "Tailwind", "Sanity", "MUI", "Next-auth", "Nodemailer", "API", "POO", "Design patterns"],
+    tags: ["Next.js", "MongoDB", "Tailwind", "Sanity", "MUI", "Next-auth", "Design patterns", "Nodemailer", "API", "Scraping"],
     imageUrl: ABB,
     site: "https://argenteuilbasketball.com",
     github: "https://github.com/AdrienPoua/argenteuil_basketball",

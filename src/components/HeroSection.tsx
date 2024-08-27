@@ -1,27 +1,13 @@
 "use client";
 
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import Adrien from '@/public/poua_adrien.jpg';
+import Adrien from '@/public/poua_adrien.png';
 import TypingEffect from "@/components/Typing";
 import { contact } from "@/data/index";
-import Curv from "@/components/Curv";
 import useIsMobile from '@/hooks/useMobile';
 import { ButtonBlackEffect } from './Button';
 
-// Reusable Button Component
-const ContactButton = ({ fullWidth = false }: { fullWidth?: boolean }) => (
-  <Button
-    variant="contained"
-    href="#contact"
-    color="primary"
-    size="large"
-    fullWidth={fullWidth}
-    className="w-fit h-fit shrink-1 m-auto my-0 md:my-5"
-  >
-    Contactez-moi
-  </Button>
-);
 
 // Right Section Component
 const RightSection = () => (
@@ -41,7 +27,7 @@ const RightSection = () => (
 
 const Dev = (): JSX.Element => {
   return (
-    <Typography variant="h1" color="primary" className="text-center  text-9xl rotate-90 absolute right-0 opacity-50" >
+    <Typography variant="h1" color="#b0916c" className="text-center  text-9xl rotate-90 absolute right-0 opacity-50" >
       DEV
     </Typography>
   )
@@ -73,14 +59,11 @@ const LeftSection = () => (
 const HeroSection = () => {
   const isMobile = useIsMobile();
   return (
-    <>
-      <Box className="flex flex-col md:flex-row justify-center items-center gap-10" component="main">
-        <LeftSection />
-        <RightSection />
-        {!isMobile && <Dev />}
-      </Box>
-      <Curv rotate />
-    </>
+    <Box className="flex flex-col md:flex-row justify-center items-center gap-10 mb-20" component="main">
+      <LeftSection />
+      <RightSection />
+      {!isMobile && <Dev />}
+    </Box>
   );
 }
 

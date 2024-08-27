@@ -1,4 +1,11 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { Fira_Code } from "next/font/google";
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 
 
 // Créez un thème personnalisé
@@ -6,6 +13,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#6b7280', // Couleur principale personnalisée
+    },
+    secondary: {
+      main: '#b0916c', // Couleur secondaire personnalisée
     },
     text: {
       primary: '#00000', // Couleur de texte principale
@@ -22,6 +32,7 @@ const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: firaCode.style.fontFamily,
     body1: {
       color: '#000000',
     },
@@ -30,14 +41,11 @@ const theme = createTheme({
     },
     h1: {
       color: '#000000', // Couleur de texte pour h1
-      fontFamily: 'Playfair Display',
-      
+
     },
     h2: {
-      fontFamily: 'Playfair Display',
     },
     h3: {
-      fontFamily: 'Playfair Display',
       color: '#6b7280', // Couleur de texte pour h3
     },
   },

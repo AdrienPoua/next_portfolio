@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Typography, Box } from '@mui/material';
-import { wavyAnimation } from "@/animations";
 import Link from "next/link";
 import { github as githubImg } from "@/data";
 
