@@ -1,14 +1,11 @@
 "use client";
-import { Box } from "@mui/material";
-import Image, { StaticImageData } from "next/image";
-import { v4 as uuidv4 } from "uuid";
-import { footer } from "@/data";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { wavyAnimation } from "@/animations";
 
 
 
-const Item = ({ content, delay }: { content: StaticImageData, delay: number }) => {
+const Item = ({ url, delay }: { url: string, delay: number }) => {
   return (
     <motion.div
       variants={wavyAnimation}
@@ -18,21 +15,23 @@ const Item = ({ content, delay }: { content: StaticImageData, delay: number }) =
       className=" aspect-square overflow-hidden rounded-full shrink-0"
       transition={{ yoyo: Infinity, duration: 1.5, repeat: Infinity, repeatType: "mirror", delay: delay * 0.25 }}
     >
-      <Image src={content} width={80} height={80} alt="stack" className="aspect-square size-14 md:size-20" objectFit="cover" />
+      <Image src={url} width={80} height={80} alt="stack" className="aspect-square size-14 md:size-20" objectFit="cover" />
     </motion.div>
   )
 }
 
 export default function Footer() {
   return (
-    <Box
-      component="footer"
+    <footer
       className="bg-black py-8 flex justify-center gap-4 px-10"
     >
-      {footer.map((content, index) => (
-        <Item content={content} key={uuidv4()} delay={index} />
-      ))}
-    </Box>
+      {["/nextjs.png",
+        "/react.png",
+        "/typescript.png",
+        "/framer.png"].map((url: string, index: number) => (
+          <Item url={url} key={url} delay={index} />
+        ))}
+    </footer>
   );
 }
 

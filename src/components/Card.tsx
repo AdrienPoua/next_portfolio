@@ -15,7 +15,7 @@ type ProjectProps = {
   tags: string[];
   imageUrl: string;
   site: string;
-  github: string;
+  githubUrl: string;
 };
 
 export default function Project({
@@ -24,9 +24,8 @@ export default function Project({
   tags,
   imageUrl,
   site,
-  github,
+  githubUrl,
 }: Readonly<ProjectProps>) {
-  console.log("🚀 ~ github:", github)
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -57,7 +56,7 @@ export default function Project({
               asChild
               className="ml-auto"
             >
-              <Link href={github} target="_blank" rel="noopener noreferrer">
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub repository</span>
               </Link>

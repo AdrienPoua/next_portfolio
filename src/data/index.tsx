@@ -1,14 +1,3 @@
-import React from "@/public/react.png";
-import github from "@/public/github.png";
-import linkedin from "@/public/linkedin.png";
-import email from "@/public/mail.png";
-import nextJS from "@/public/nextjs.png";
-import Typescript from "@/public/typescript.png";
-import Framer from "@/public/framer.png";
-import ABB from "@/public/ABB.png";
-import portfolio from "@/public/portfolio.png";
-import kasa from "@/public/kasa.png";
-
 export const projectsData = [
   {
     title: "Argenteuil Basketball",
@@ -36,29 +25,10 @@ export const projectsData = [
   },
 ];
 
-export const contact = [
-  {
-    link: "https://github.com/AdrienPoua",
-    img: github,
-    name: "Github",
-  },
-  {
-    link: "https://www.linkedin.com/in/adrien-poua/",
-    img: linkedin,
-    name: "Linkedin",
-  },
-  {
-    link: "mailto:adrien.poua@gmail.com",
-    img: email,
-    name: "Email",
-  },
-]
 
 export const footer = [
-  nextJS,
-  React,
-  Typescript,
-  Framer
+  "/nextjs.png",
+  "/react.png",
+  "/typescript.png",
+  "/framer.png"
 ]
-
-export { github, linkedin, email, nextJS, Typescript, Framer, ABB, portfolio, kasa };

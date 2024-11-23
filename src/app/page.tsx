@@ -6,7 +6,6 @@ import Skills from "@/components/Skills";
 import Projets from "@components/Projets";
 import { Toaster } from "@/components/ui/toaster";
 import Contact from "@components/Contact";
-import { Separator } from "@/components/ui/separator";
 
 
 export default function Home() {

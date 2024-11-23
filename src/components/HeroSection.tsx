@@ -1,14 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Adrien from "@/public/poua_adrien.png";
-import { contact } from "@/data/index";
 import { ButtonBlackEffect } from "./Button";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+
+
+export default function HeroSection() {
+  return (
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative overflow-hidden">
+      <LeftSection />
+      <RightSection />
+      <p className="text-primary text-9xl rotate-90 absolute right-0 top-1/2 -translate-y-1/2 opacity-50">
+        DEV
+      </p>
+    </main>
+  );
+};
 
 const RightSection = () => {
   const controls = useAnimation();
@@ -45,7 +57,6 @@ const RightSection = () => {
 };
 
 const LeftSection = () => {
-
   return (
     <motion.div
       className={cn("flex flex-col items-center justify-center w-fit ml-auto")}
@@ -82,15 +93,20 @@ const LeftSection = () => {
   );
 };
 
-export default function HeroSection() {
-  return (
-    <main className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative overflow-hidden">
-      <LeftSection />
-      <RightSection />
-      <p className="text-primary text-9xl rotate-90 absolute right-0 top-1/2 -translate-y-1/2 opacity-50">
-        DEV
-      </p>
-    </main>
-  );
-};
-
+const contact = [
+  {
+    link: "https://github.com/AdrienPoua",
+    img: "/github.png",
+    name: "Github",
+  },
+  {
+    link: "https://www.linkedin.com/in/adrien-poua/",
+    img: "/linkedin.png",
+    name: "Linkedin",
+  },
+  {
+    link: "mailto:adrien.poua@gmail.com",
+    img: "/mail.png",
+    name: "Email",
+  },
+]

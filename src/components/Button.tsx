@@ -1,12 +1,12 @@
 import { Box, Typography, Button } from '@mui/material';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 
 type ButtonProps = {
-    icon?: StaticImageData;
+    icon?: string;
     href: string;
     text: string;
-    navitem? : boolean;
+    navitem?: boolean;
 }
 
 export function ButtonBlackEffect({ icon, href, text, navitem }: Readonly<ButtonProps>) {
@@ -17,7 +17,7 @@ export function ButtonBlackEffect({ icon, href, text, navitem }: Readonly<Button
             {icon && <Image src={icon} alt={"Way to contact me"} className="w-10 h-10 rounded-full " />}
         </Button>
     );
-} 
+}
 
 const BlackEffect = () => {
     return (

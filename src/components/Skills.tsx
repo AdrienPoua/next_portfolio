@@ -1,36 +1,26 @@
 "use client";
-import React from 'react'
-import Layout from "@layouts/Section"
-import { Box } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
-import ReactIMG from '@/public/react.png'
-import NextIMG from '@/public/nextjs.png'
-import TypescriptIMG from '@/public/typescript.png'
-import GitIMG from '@/public/git.png'
-import GithubIMG from '@/public/github.png'
-import TailwindIMG from '@/public/tailwind.png'
-import MUIIMG from '@/public/MUI.jpeg'
-import NodeJSIMG from '@/public/nodeJS.png'
-import MongoDBIMG from '@/public/mongoDB.png'
-import Tooltip from '@mui/material/Tooltip'
-import Fade from '@mui/material/Fade'
-import BoostrapIMG from '@/public/bootstrap.jpeg'
-import { motion } from 'framer-motion'
-import { blurInAnimation } from '@/animations'
-import useVisibility from '@/hooks/useVisiblity'
+import React from 'react';
+import Layout from "@layouts/Section";
+import { Box } from '@mui/material';
+import Image from 'next/image';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import { motion } from 'framer-motion';
+import { blurInAnimation } from '@/animations';
+import useVisibility from '@/hooks/useVisiblity';
 
 
-const Img: { [key: string]: StaticImageData } = {
-  "react": ReactIMG,
-  "nextJS": NextIMG,
-  "typescript": TypescriptIMG,
-  "git": GitIMG,
-  "github": GithubIMG,
-  "tailwind": TailwindIMG,
-  "MUI": MUIIMG,
-  "nodeJS": NodeJSIMG,
-  "mongoDB": MongoDBIMG,
-  "bootstrap": BoostrapIMG,
+const Img: { [key: string]: string } = {
+  "react": "/react.png",
+  "nextJS": "/nextjs.png",
+  "typescript": "/typescript.png",
+  "git": "/git.png",
+  "github": "/github.png",
+  "tailwind": "/tailwind.png",
+  "MUI": "/MUI.jpeg",
+  "nodeJS": "/nodeJS.png",
+  "mongoDB": "/mongoDB.png",
+  "bootstrap": "/bootstrap.jpeg",
 }
 
 const Circle = () => {
@@ -50,7 +40,7 @@ const Item = ({ bottom, skill }: { bottom?: boolean, skill: string }) => {
       arrow
     >
       <Box className={`rounded-full overflow-hidden h-fit  w-1/3 z-10 border hover:scale-125 cursor-pointer  transition-transform duration-125 ease-in-out border-black ${bottom ? "absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" : ""}`}>
-        <Image src={Img[skill]} alt={`${skill} logo`} objectFit='cover' className="aspect-square" />
+        <Image src={Img[skill]} alt={`${skill} logo`} objectFit='cover' className="aspect-square" width={100} height={100} />
       </Box>
     </Tooltip>
   )
