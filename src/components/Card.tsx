@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Typography, Box } from '@mui/material';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
-import { github as githubImg } from "@/data";
-
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Github } from 'lucide-react'
 
 type ProjectProps = {
   title: string;
   description: string;
   tags: string[];
-  imageUrl: StaticImageData;
+  imageUrl: string;
   site: string;
   github: string;
 };
@@ -43,38 +44,41 @@ export default function Project({
       }}
       className="group mb-3 sm:mb-8 last:mb-0"
     >
-      <Box
-        component="section"
+      <Card
         onClick={() => window.open(site, "_blank")}
-        className="bg-gray-100 max-w-[42rem] border cursor-pointer border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20"
+        className="] border cursor-pointer overflow-hidden sm:pr-8 relative sm:h-[20rem]  transition sm:group-even:pl-8 bg-transparent hover:bg-primary/10"
       >
-        <Box className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <Box className="flex items-center z-10">
-            <Typography variant="h3" component="h3" className="text-xl font-semibold mr-2">
-              {title}
-            </Typography>
-            <Link href={github} target="_blank"
-              onClick={() => window.open(github, "_blank")}
-              rel="noreferrer"
-              className="z-30 overflow-hidden rounded-full aspect-square hover:scale-125 duration-150" >
-              <Image src={githubImg} alt={"Way to contact me"} className="w-10 h-10 mb-4" />
-            </Link>
-          </Box>
-          <Typography variant="body1" className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
+        <CardContent className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
+          <CardHeader className="text-primary flex items-center justify-between flex-row p-0 ">
+            {title}
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="ml-auto"
+            >
+              <Link href={github} target="_blank" rel="noopener noreferrer">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub repository</span>
+              </Link>
+            </Button>
+          </CardHeader>
+          <CardDescription className="mt-4">
             {description}
-          </Typography>
-          <Box component="ul" className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
-            {tags.map((tag, index) => (
-              <Box
-                component="li"
-                className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+          </CardDescription>
+          <CardFooter className="p-0 mt-auto">
+            <ul className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
+              {tags.map((tag, index) => (
+              <Badge
                 key={tag}
+                variant="secondary"
               >
                 {tag}
-              </Box>
-            ))}
-          </Box>
-        </Box>
+                </Badge>
+              ))}
+            </ul>
+          </CardFooter>
+        </CardContent>
         <Image
           src={imageUrl}
           alt="Project I worked on"
@@ -83,7 +87,8 @@ export default function Project({
           height={250}
           className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl transition group-hover:scale-[1.04] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 group-even:group-hover:translate-x-3 group-even:group-hover:translate-y-3 group-even:group-hover:rotate-2 group-even:right-[initial] group-even:-left-40"
         />
-      </Box>
+      </Card>
     </motion.div>
   );
 }
+

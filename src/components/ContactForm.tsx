@@ -1,101 +1,121 @@
-import React, { useEffect, useState } from 'react'
-import { Box, TextField, Button, Alert, LinearProgress } from '@mui/material';
-import { sendEmail } from "@actions";
+"use client";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Send } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import SendEmail from "@/hooks/useSendEmail";
+
+const contactFormSchema = z.object({
+    email: z.string({ message: "Veuillez entrer un email valide" }).email({ message: "Veuillez entrer un email valide" }),
+    message: z.string({ message: "Veuillez entrer un message" }).min(1, { message: "Veuillez entrer un message" }).max(500, { message: "Votre message est trop long" }),
+});
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
-    const [content, setContent] = useState("");
-    const [from, setFrom] = useState("");
-    const [result, setResult] = useState<{ success: boolean; message: string; error?: unknown } | null>(null);
-    const [disabled, setDisabled] = useState(false);
-    const [mounted, setMounted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { toast } = useToast();
 
-    useEffect(() => {
-        setMounted(true); // Indiquer que le composant est monté
-    }, []);
+    const form = useForm<ContactFormValues>({
+        resolver: zodResolver(contactFormSchema),
+        defaultValues: {
+            email: "",
+            message: "",
+        },
+    });
 
-    const handleContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setContent(event.target.value);
-    };
-
-    const handleFromChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFrom(event.target.value);
-    };
-
-    const isValidEmail = (email: string) => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!isValidEmail(from)) {
-            setResult({ success: false, message: "Adresse e-mail invalide", error: null });
-            return;
-        }
+    async function onSubmit(data: ContactFormValues) {
+        setIsLoading(true);
         try {
-            setDisabled(true);
-            const res = await sendEmail(from, content);
-            setResult(res);
-            setDisabled(!res.success);
-        } catch (error) {
-            console.error("Erreur lors de l'envoi de l'email:", error);
-            setResult({ success: false, message: "Erreur lors de l'envoi de l'email", error });
-            setDisabled(false);
+            const response = await SendEmail({ from: data.email, text: data.message });
+            console.log("🚀 ~ onSubmit ~ response:", response)
+            if (response.ok) {
+                toast({
+                    title: "Message envoyé!",
+                    description: "Merci pour votre message. Je vous répondrai dès que possible.",
+                });
+                form.reset();
+            } else {
+                toast({
+                    title: "Erreur",
+                    description: "Quelque chose s'est mal passé. Veuillez réessayer.",
+                    variant: "destructive",
+                });
+            }
+        } finally {
+            setIsLoading(false);
         }
-    };
-
-    useEffect(() => {
-        if (result) {
-            const timer = setTimeout(() => {
-                setResult(null);
-            }, 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [result]);
-
-    if (!mounted) {
-        return null; // Ne rien rendre jusqu'à ce que le composant soit monté
     }
 
     return (
-        <Box component="form" onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-5 max-w-full w-[800px]">
-            <TextField
-                label="Votre email"
-                variant="outlined"
-                required
-                error={result?.success === false}
-                value={from}
-                onChange={handleFromChange}
-                className="w-full bg-white "
-            />
-            <TextField
-                label="Entrez votre message ici"
-                multiline
-                rows={10}
-                required
-                autoComplete="off"
-                variant="outlined"
-                value={content}
-                onChange={handleContentChange}
-                className="w-full bg-white"
-            />
-            {!disabled && <Button type="submit" variant="contained" color="primary" disabled={disabled} >
-                Envoyer
-            </Button>}
-            {
-                disabled && (
-                    <Box className="w-full">
-                        <LinearProgress color='primary' />
-                    </Box>
-                )
-            }
-            {result && (
-                <Box mt={2} className="max-w-[800px] mx-auto">
-                    <Alert severity={result.success ? "success" : "error"}>
-                        {result.message}
-                    </Alert>
-                </Box>
-            )}
-        </Box>
-
-    )
+        <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6 max-w-[700px] container"
+            >
+                <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel className="text-lg font-bold text-white">
+                                Votre email
+                            </FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="elonmusk@tesla.com"
+                                    {...field}
+                                    disabled={isLoading}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel className="text-lg font-bold text-white">
+                                Message
+                            </FormLabel>
+                            <FormControl>
+                                <Textarea
+                                    placeholder="Je suis intéressé par votre travail"
+                                    className="min-h-[120px] resize-none"
+                                    {...field}
+                                    disabled={isLoading}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button type="submit" disabled={isLoading} className="w-full" variant="outline">
+                    {isLoading ? (
+                        "Envoi en cours..."
+                    ) : (
+                        <>
+                            Envoyer un message
+                            <Send className="ml-2 h-4 w-4" />
+                        </>
+                    )}
+                </Button>
+            </form>
+        </Form>
+    );
 }

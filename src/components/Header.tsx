@@ -4,13 +4,16 @@ import MobileNav from "@/components/MobileNav";
 import { Box } from "@mui/material";
 import useIsMobile from "@/hooks/useMobile";
 import Logo from "@/components/Logo";
-
+import MusicButton from "@/components/MusicButton";
 
 export default function Header() {
   const isMobile = useIsMobile();
   return (
     <Box component="header" id="back-to-top-anchor" className="flex justify-between items-center lg:items-start mx-10 my-5">
-      <Logo />
+      <div className="flex flex-col items-center gap-5">
+        <Logo />
+        <MusicButton />
+      </div>
       {isMobile ? <MobileNav /> : <DesktopNav />}
     </Box>
   );

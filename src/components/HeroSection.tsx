@@ -1,70 +1,96 @@
 "use client";
 
-import { Box, Typography } from '@mui/material';
-import Image from 'next/image';
-import Adrien from '@/public/poua_adrien.png';
-import TypingEffect from "@/components/Typing";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Adrien from "@/public/poua_adrien.png";
 import { contact } from "@/data/index";
-import useIsMobile from '@/hooks/useMobile';
-import { ButtonBlackEffect } from './Button';
+import { ButtonBlackEffect } from "./Button";
+import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
 
+const RightSection = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
 
-// Right Section Component
-const RightSection = () => (
-  <Box className="flex justify-center items-center">
-    <Box className="overflow-hidden rounded-full shrink-0 aspect-square md:size-fit size-48 shadow-gray-500 shadow-2xl drop-shadow-2xl">
-      <Image
-        src={Adrien}
-        alt="placeholder"
-        width={300}
-        height={300}
-        objectFit="cover"
-        className=""
-      />
-    </Box>
-  </Box>
-);
+  useEffect(() => {
+    if (inView) {
+      controls.start({ scale: 1, opacity: 1 });
+    }
+  }, [controls, inView]);
 
-const Dev = (): JSX.Element => {
   return (
-    <Typography variant="h1" color="#b0916c" className="text-center  text-9xl rotate-90 absolute right-0 opacity-50" >
-      DEV
-    </Typography>
-  )
-}
+    <motion.div
+      className="flex justify-start"
+      ref={ref}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={controls}
+      transition={{ duration: 0.5 }}
+    >
+      <Card className="overflow-hidden rounded-full shrink-0 aspect-square md:w-[300px] w-48 shadow-primary shadow-md m-5">
+        <CardContent className="p-0">
+          <Image
+            src={Adrien}
+            alt="Portrait d'Adrien Poua"
+            width={300}
+            height={300}
+            className="object-cover"
+            priority
+          />
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
 
-// Left Section Component
-const LeftSection = () => (
-  <Box className="flex flex-col justify-center w-full md:w-fit order:last md:order-first  items-center">
-    <Box className="flex flex-row mb-5">
-      <Typography variant="h1" className="text-primary text-center flex items-center ">
-        <Typography component={'span'} className="text-primary text-center relative text-6xl after:bg-gradient-to-r from-black to-slate-500 after:p-1  after:shadow-xl after:w-full after:rounded-lg after:filter after:absolute after:-bottom-1 after:left-0 inline-block">
-          Poua
-        </Typography>
-        <Typography component={'span'} className="text-primary text-6xl inline-block ml-2">
-          Adrien
-        </Typography>
-      </Typography>
-    </Box>
-    <TypingEffect text="Développeur Front-end" classNames="text-2xl text-center mb-5" />
-    <Box className="flex md:gap-5 gap-2 flex-wrap justify-center">
-      {contact.map((item) => (
-        <ButtonBlackEffect key={item.name} href={item.link} text={item.name} icon={item.img} />
-      ))}
-    </Box>
-  </Box>
-);
+const LeftSection = () => {
 
-// Main Hero Section Component
-const HeroSection = () => {
-  const isMobile = useIsMobile();
   return (
-    <Box className="flex flex-col md:flex-row justify-center items-center gap-10 mb-20" component="main">
+    <motion.div
+      className={cn("flex flex-col items-center justify-center w-fit ml-auto")}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="flex flex-row mb-5"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <h1 className="text-center flex items-center text-4xl md:text-6xl font-semibold">
+          <span className="relative after:bg-gradient-to-r from-primary to-primary/10 after:p-1 after:shadow-xl after:w-full after:rounded-lg after:filter after:absolute after:-bottom-1 after:left-0 inline-block animate-wave">
+            Poua
+          </span>
+          <span className="inline-block ml-2">Adrien</span>
+        </h1>
+      </motion.div>
+      <h2 className="text-xl md:text-2xl text-center mb-16 font-semibold">
+        Développeur fullstack
+      </h2>
+      <motion.div
+        className="flex md:gap-5 gap-2 flex-wrap justify-center"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        {contact.map((item) => (
+          <ButtonBlackEffect key={item.name} href={item.link} text={item.name} icon={item.img} />
+        ))}
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default function HeroSection() {
+  return (
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative overflow-hidden">
       <LeftSection />
       <RightSection />
-      {!isMobile && <Dev />}
-    </Box>
+      <p className="text-primary text-9xl rotate-90 absolute right-0 top-1/2 -translate-y-1/2 opacity-50">
+        DEV
+      </p>
+    </main>
   );
-}
+};
 
-export default HeroSection;
