@@ -1,53 +1,84 @@
-import React, { useState } from "react";
-import { Box, Container, Button, Drawer, List, ListItem } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import BlurCircularIcon from '@mui/icons-material/BlurCircular';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import DevicesIcon from '@mui/icons-material/Devices';
+"use client"
+
+import React, { useState } from "react"
+import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Menu, Mail, CircleDot, User, Laptop } from 'lucide-react'
+import Link from "next/link"
 
 type CustomLinkProps = {
-  href: string,
-  title: string,
-  endIcon: React.ReactNode,
-  setIsOpen: (x: boolean) => void
+  href: string
+  title: string
+  icon: React.ReactNode
+  onClose: () => void
 }
 
-const CustomLink = ({ href, title, setIsOpen, endIcon }: CustomLinkProps) => {
+const CustomLink = ({ href, title, icon, onClose }: CustomLinkProps) => {
   return (
-    <ListItem className="p-0">
-      <Button href={"#" + href} onClick={() => setIsOpen(false)} className="text-black size-full rounded-none py-6 " variant="contained" endIcon={endIcon}>
+    <Button
+      asChild
+      className="w-full justify-start"
+      onClick={onClose}
+    >
+      <Link href={`#${href}`}>
         {title}
-      </Button>
-    </ListItem>
-  );
+        {icon}
+      </Link>
+    </Button>
+  )
 }
 
 export default function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false)
+
+  const handleClose = () => setOpen(false)
+
   return (
-    <Container component="nav" className="flex items-center justify-end ">
-      <Button onClick={() => setIsOpen(true)}>
-        <MenuIcon className="text-6xl text-black" />
-      </Button>
-      <Drawer
-        anchor="right"
-        open={isOpen}
-        onClose={() => setIsOpen(false)}>
-        <Box>
-          <List className="flex flex-col p-0 min-w-[200px]">
-            <CustomLink href="about" title="À propos" setIsOpen={setIsOpen} endIcon={<PersonOutlineIcon />
-            } />
-            <CustomLink href="compétences" title="Compétences" setIsOpen={setIsOpen} endIcon={<BlurCircularIcon />
-            } />
-            <CustomLink href="projets" title="projets" setIsOpen={setIsOpen} endIcon={<DevicesIcon />
-            } />
-            <CustomLink href="contact" title="Contact" setIsOpen={setIsOpen} endIcon={<MailOutlineIcon />
-            } />
-          </List>
-        </Box>
-      </Drawer>
-    </Container>
-  );
-};
+    <nav className="flex md:hidden justify-end mb-10">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button variant="ghost" className="md:hidden">
+          <Menu className="min-w-9 min-h-9" />
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 mt-10">
+          <div className="flex flex-col space-y-3">
+            <CustomLink
+              href="services"
+              title="Services"
+              onClose={handleClose}
+              icon={<User className="ml-auto h-5 w-5" />}
+            />
+            <CustomLink
+              href="compétences"
+              title="Compétences"
+              onClose={handleClose}
+              icon={<CircleDot className="ml-auto h-5 w-5" />}
+            />
+            <CustomLink
+              href="projets"
+              title="Projets"
+              onClose={handleClose}
+              icon={<Laptop className="ml-auto h-5 w-5" />}
+            />
+            <CustomLink
+              href="contact"
+              title="Contact"
+              onClose={handleClose}
+              icon={<Mail className="ml-auto h-5 w-5" />}
+            />
+          </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
+    </nav>
+  )
+}
 

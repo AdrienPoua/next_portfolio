@@ -40,7 +40,7 @@ const Item = ({ bottom, skill }: { bottom?: boolean, skill: string }) => {
       arrow
     >
       <Box className={`rounded-full overflow-hidden h-fit  w-1/3 z-10 border hover:scale-125 cursor-pointer  transition-transform duration-125 ease-in-out border-black ${bottom ? "absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" : ""}`}>
-        <Image src={Img[skill]} alt={`${skill} logo`} objectFit='cover' className="aspect-square" width={100} height={100} />
+        <Image src={Img[skill]} alt={`${skill} logo`} className="aspect-square object-cover" width={100} height={100} />
       </Box>
     </Tooltip>
   )

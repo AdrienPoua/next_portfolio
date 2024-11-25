@@ -25,10 +25,3 @@ export const projectsData = [
   },
 ];
 
-
-export const footer = [
-  "/nextjs.png",
-  "/react.png",
-  "/typescript.png",
-  "/framer.png"
-]

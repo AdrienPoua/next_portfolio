@@ -7,15 +7,11 @@ import Logo from "@/components/Logo";
 import MusicButton from "@/components/MusicButton";
 
 export default function Header() {
-  const isMobile = useIsMobile();
   return (
-    <Box component="header" id="back-to-top-anchor" className="flex justify-between items-center lg:items-start mx-10 my-5">
-      <div className="flex flex-col items-center gap-5">
-        <Logo />
-        <MusicButton />
-      </div>
-      {isMobile ? <MobileNav /> : <DesktopNav />}
-    </Box>
+    <header id="back-to-top-anchor" className="w-full">
+      <MobileNav />
+      <DesktopNav />
+    </header>
   );
 };
 

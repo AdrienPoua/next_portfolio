@@ -5,9 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Music } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function MusicButton() {
+export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlaying: React.Dispatch<React.SetStateAction<boolean>> }) {
     const [isHovered, setIsHovered] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null); // Référence pour l'élément audio
 
     const toggleMusic = () => {

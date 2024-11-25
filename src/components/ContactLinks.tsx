@@ -25,7 +25,7 @@ const contact = [
 
 export default function ContactLinks() {
     return (
-        <Box className="flex md:flex-col justify-center md:justify-start w-full gap-5 shrink-0 md:w-fit">
+        <Box className="hidden md:flex-col justify-center md:justify-start w-full gap-5 shrink-0 md:w-fit">
             {
                 contact.map((item, index) => (
                     <motion.div

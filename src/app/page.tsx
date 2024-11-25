@@ -1,7 +1,7 @@
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import HeroSection from "@components/HeroSection";
-import About from "@/components/Services";
+import Services from "@/components/Services";
 import Skills from "@/components/Skills";
 import Projets from "@components/Projets";
 import { Toaster } from "@/components/ui/toaster";
@@ -14,7 +14,7 @@ export default function Home() {
       <Header />
       <Toaster />
       <HeroSection />
-      <About />
+      <Services />
       <Skills />
       <Projets />
       <Contact />
