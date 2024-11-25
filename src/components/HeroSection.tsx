@@ -14,7 +14,7 @@ import MusicButton from "./MusicButton";
 
 export default function HeroSection() {
   return (
-    <main className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 relative overflow-hidden">
+    <main className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20 relative overflow-hidden ">
       <LeftSection />
       <RightSection />
       <p className="hidden md:block text-primary text-9xl rotate-90 absolute right-0 top-1/2 -translate-y-1/2 opacity-50">
@@ -36,7 +36,7 @@ const RightSection = () => {
 
   return (
     <motion.div
-    className="flex justify-start"
+    className="flex justify-center md:justify-start"
     ref={ref}
       initial={{ scale: 0.8, opacity: 0 }}
       animate={controls}
@@ -62,7 +62,7 @@ const LeftSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <motion.div
-    className={cn("flex flex-col items-center justify-center w-fit ml-auto")}
+    className={cn("flex flex-col items-center justify-center w-fit mx-auto md:ml-auto")}
     initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}

@@ -39,7 +39,7 @@ export default function MobileNav() {
   const handleClose = () => setOpen(false)
 
   return (
-    <nav className="flex md:hidden justify-end mb-10">
+    <nav className="flex md:hidden justify-end mb-10 p-5">
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="ghost" className="md:hidden">
