@@ -68,7 +68,7 @@ export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: bo
                 </motion.div>
             </Button>
             {/* Élément audio caché */}
-            <audio ref={audioRef} src="/music.mp3" />
+            <audio ref={audioRef} src="/music.mp3" loop />
         </motion.div>
     );
 }
