@@ -35,26 +35,38 @@ const RightSection = () => {
   }, [controls, inView])
 
   return (
-    <motion.div
-    className="flex justify-center md:justify-start"
-    ref={ref}
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={controls}
-      transition={{ duration: 0.5 }}
-    >
-      <Card className="overflow-hidden rounded-full shrink-0 aspect-square md:w-[300px] w-48 shadow-primary shadow-md m-5 relative">
-        <CardContent className="p-0">
-          <Image
-            src={Adrien}
-            alt="Portrait d'Adrien Poua"
-            width={300}
-            height={300}
-            className="object-cover"
-            priority
-          />
-        </CardContent>
-      </Card>
-    </motion.div>
+    <div className="flex flex-col">
+      <motion.div
+        className="flex justify-center md:justify-start"
+        ref={ref}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={controls}
+        transition={{ duration: 0.5 }}
+      >
+        <Card className="overflow-hidden rounded-full shrink-0 aspect-square md:w-[300px] w-48 shadow-primary shadow-md m-5 relative">
+          <CardContent className="p-0">
+            <Image
+              src={Adrien}
+              alt="Portrait d'Adrien Poua"
+              width={300}
+              height={300}
+              className="object-cover"
+              priority
+            />
+          </CardContent>
+        </Card>
+      </motion.div>
+      <motion.div
+        className="md:hidden flex justify-center items-center"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        {contact.map((item) => (
+          <ButtonBlackEffect key={item.name} href={item.link} text={item.name} icon={item.img} />
+        ))}
+      </motion.div>
+    </div>
   )
 }
 
@@ -62,8 +74,8 @@ const LeftSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <motion.div
-    className={cn("flex flex-col items-center justify-center w-fit mx-auto md:ml-auto")}
-    initial={{ y: -20, opacity: 0 }}
+      className={cn("flex flex-col items-center justify-center w-fit mx-auto md:ml-auto")}
+      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
