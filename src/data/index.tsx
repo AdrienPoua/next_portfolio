@@ -8,20 +8,20 @@ export const projectsData = [
     github: "https://github.com/AdrienPoua/argenteuil_basketball",
   },
   {
+    title: "Marrakech Vizir",
+    description: "Site de location d'un appartement à Marrakech pour un particulier.",
+    tags: ["Next.js", "Stripe", "Shadcn", "Tailwind"],
+    imageUrl: "/vizir.png",
+    site: "https://marrakech-three.vercel.app",
+    github: "https://github.com/AdrienPoua/Vizir",
+  },
+  {
     title: "Portfolio",
     description: "Mon ancien portfolio avec three.js et framer-motion",
     tags: ["React", "Framer-motion", "Three.JS"],
     imageUrl: "/portfolio.png",
     site: "https://portfolio-space-puce.vercel.app",
     github: "https://github.com/AdrienPoua/Portfolio_space",
-  },
-  {
-    title: "Kasa",
-    description: "Site fait en React et Sass pour une agence de location de logements lors de ma formation",
-    tags: ["React", "Sass"],
-    imageUrl: "/kasa.png",
-    site: "https://adrienpoua.github.io/Poua_Adrien_6_Kasa_072023/",
-    github: "https://github.com/AdrienPoua/Poua_Adrien_6_Kasa_072023",
   },
 ];
 
